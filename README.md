@@ -4,6 +4,8 @@
 - Currently the software supports reading data from `MYSQL`
 
 # Preview
-<img src="https://github.com/VennDev/VDataStorageSystemsWebsite/blob/main/images/main-page.png">
+<img src="https://github.com/VennDev/VDataStorageSystemsWebsite/blob/main/images/main.png">
 </br>
-<img src="https://github.com/VennDev/VDataStorageSystemsWebsite/blob/main/images/edit-page.png">
+<img src="https://github.com/VennDev/VDataStorageSystemsWebsite/blob/main/images/edit.png">
+</br>
+<img src="https://github.com/VennDev/VDataStorageSystemsWebsite/blob/main/images/about.png">
