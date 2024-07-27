@@ -66,21 +66,24 @@ window.onload = function() {
     database = document.getElementById('database').innerHTML;
     port = document.getElementById('port').innerHTML;
 
-    fetch('action/get-tables.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-            host: host,
-            username: username,
-            password: password,
-            database: database,
-            port: port
-        })
-    }).then(response => response.json()).then(data => {
-        console.log(data);
-        document.getElementById('status-connect').innerHTML = data.connected ? '<div class="text-success">Connected</div>' : '<div class="text-danger">Not Connected</div>';
-        document.getElementById('tables').innerHTML += data.tables.map(table => `<option value="${table}">${table}</option>`).join('');
-    });
+    if (host == '' || username == '' || database == '' || port == '') {
+        window.location.href = 'index.php';
+    } else {
+        fetch('action/get-tables.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                host: host,
+                username: username,
+                password: password,
+                database: database,
+                port: port
+            })
+        }).then(response => response.json()).then(data => {
+            document.getElementById('status-connect').innerHTML = data.connected ? '<div class="text-success">Connected</div>' : '<div class="text-danger">Not Connected</div>';
+            document.getElementById('tables').innerHTML += data.tables.map(table => `<option value="${table}">${table}</option>`).join('');
+        });
+    }
 };

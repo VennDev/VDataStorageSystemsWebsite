@@ -25,7 +25,7 @@
                     <label for="port" class="form-label">Port</label>
                     <input type="number" class="form-control" id="port" name="port" value="3306" required>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">Login</button>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
             </form>
         </main>
     </div>

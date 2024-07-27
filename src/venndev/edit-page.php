@@ -34,7 +34,7 @@ if (isset($_POST['host']) && isset($_POST['username']) && isset($_POST['password
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="hash-data">
                     <label class="form-check-label" for="hash-data">
-                        Hash Data
+                        Is your data hashed?
                     </label>
                 </div>
             </div>
