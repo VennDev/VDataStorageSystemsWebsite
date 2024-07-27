@@ -4,3 +4,5 @@ The software manages to edit, save and read the data saved by VDataStorageSystem
 # Preview
 
 <img src="https://github.com/VennDev/VDataStorageSystemsWebsite/blob/main/images/edit-page.png">
+</br>
+<img src="https://github.com/VennDev/VDataStorageSystemsWebsite/blob/main/images/main-page.png">
