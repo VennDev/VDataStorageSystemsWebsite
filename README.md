@@ -9,6 +9,6 @@
 </br>
 <img src="https://github.com/VennDev/VDataStorageSystemsWebsite/blob/main/images/choose-sqlite.png">
 </br>
-<img src="https://github.com/VennDev/VDataStorageSystemsWebsite/blob/main/images/edit-mysql.png">
+<img src="https://github.com/VennDev/VDataStorageSystemsWebsite/blob/main/images/mysql-edit.png">
 </br>
-<img src="https://github.com/VennDev/VDataStorageSystemsWebsite/blob/main/images/edit-sqlite.png">
+<img src="https://github.com/VennDev/VDataStorageSystemsWebsite/blob/main/images/sqlite-edit.png">
