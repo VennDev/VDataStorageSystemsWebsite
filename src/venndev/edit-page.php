@@ -32,19 +32,16 @@ $tables = [];
         <div class="mt-3 text-center">
             <b>Type Database:&nbsp;</b><div id="type-database"><?php echo $type ?></div>
         </div>
-        <div id="mysql-status" class="d-flex mt-3" style="justify-content: center;" hidden>
+        <div id="mysql-status" class="d-flex mt-3" style="justify-content: center;">
             <b>Host:&nbsp;</b><div id="host"><?php echo $host ?></div>&nbsp;&nbsp;
             <b>Username:&nbsp;</b><div id="username"><?php echo $username ?></div>&nbsp;&nbsp;
             <b>Password:&nbsp;</b><div id="password"><?php echo $password ?></div>&nbsp;&nbsp;
-            <b>Database:&nbsp;</b><div id="database-m"><?php echo $database ?></div>&nbsp;&nbsp;
+            <b>Database:&nbsp;</b><div id="database"><?php echo $database ?></div>&nbsp;&nbsp;
             <b>Port:&nbsp;</b><div id="port"><?php echo $port ?></div>
-        </div>
-        <div id="sqlite-status" class="d-flex mt-3" style="justify-content: center;" hidden>
-            <b>Database:&nbsp;</b><div id="database-s"><?php echo $database ?></div>
         </div>
         <div class="row mt-5">
             <div class="col-md-6">
-                <select id="tables" class="form-select" aria-label="Default select example">
+                <select id="tables" class="form-select bg-secondary text-white" aria-label="tables">
                     <option selected hidden>Select Table</option>
                 </select>
             </div>
@@ -57,8 +54,18 @@ $tables = [];
                 </div>
             </div>
         </div>
-        <div class="mt-4">
-            <textarea id="content" name="content" rows="20" cols="100"></textarea><br>
+        <div class="row">
+            <div class="col-md-12">
+                <select id="set-sizes" class="form-select bg-secondary ms-auto text-white" aria-label="set-sizes" style="width: 6%;">
+                    <option selected hidden>15</option>
+                    <?php for ($i = 1; $i <= 100; $i++) { ?>
+                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div id="code"></div><br>
             <button id="save" type="button" class="btn btn-success">Save Changes</button>
         </div>
     </div>

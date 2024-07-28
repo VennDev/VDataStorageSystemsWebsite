@@ -1,8 +1,27 @@
-document.querySelector('select').addEventListener('change', function() {
+CodeMirror.commands.autocomplete = function(cm) {
+    CodeMirror.showHint(cm, CodeMirror.hint.html);
+}
+
+editor = CodeMirror(document.getElementById("code"), {
+    mode: "text/javascript",
+    theme: "darcula",
+    lineWrapping: true,
+    lineNumbers: true,
+    styleActiveLine: true,
+    matchBrackets: true,
+    extraKeys: {
+        "Ctrl-Space": "autocomplete"
+    },
+    value: ""
+});
+
+editor.setSize(null, 500);
+
+document.querySelector('#tables').addEventListener('change', function() {
     host = document.getElementById('host').innerHTML;
     username = document.getElementById('username').innerHTML;
     password = document.getElementById('password').innerHTML;
-    database = document.getElementById('database-s').innerHTML;
+    database = document.getElementById('database').innerHTML;
     port = document.getElementById('port').innerHTML;
     hashData = document.getElementById('hash-data').checked;
     type = document.getElementById('type-database').innerHTML;
@@ -24,20 +43,30 @@ document.querySelector('select').addEventListener('change', function() {
             type: type
         })
     }).then(response => response.json()).then(data => {
-        document.getElementById('content').value = JSON.stringify(data.data, null, 4);
+        editor.setValue(JSON.stringify(data.data, null, 4));
     });
+});
+
+document.querySelector('#set-sizes').addEventListener('click', function() {
+    editor.getWrapperElement().style["font-size"] = document.getElementById('set-sizes').value + 'px';
+    editor.refresh();
 });
 
 document.getElementById('save').addEventListener('click', function() {
     host = document.getElementById('host').innerHTML;
     username = document.getElementById('username').innerHTML;
     password = document.getElementById('password').innerHTML;
-    database = document.getElementById('database-s').innerHTML;
+    database = document.getElementById('database').innerHTML;
     port = document.getElementById('port').innerHTML;
-    table = document.querySelector('select').value;
-    content = document.getElementById('content').value;
+    table = document.querySelector('#tables').value;
+    content = editor.getValue();
     hashData = document.getElementById('hash-data').checked;
     type = document.getElementById('type-database').innerHTML;
+
+    if (content == '' || content == 'null') {
+        document.getElementById('alert').innerHTML = '<div class="alert alert-danger" role="alert">Please fill the content</div>';
+        return;
+    }
 
     fetch('action/save.php', {
         method: 'POST',
@@ -61,7 +90,7 @@ document.getElementById('save').addEventListener('click', function() {
         if (updated) {
             document.getElementById('alert').innerHTML = '<div class="alert alert-success" role="alert">Data updated successfully</div>';
         }
-        if (file != '') {
+        if (file != '' && type == 'sqlite') {
             const fileUrlDownload = '/download.php?file=' + file;
             const fileName = file;
             const a = document.createElement('a');
@@ -82,7 +111,7 @@ window.onload = function() {
     host = document.getElementById('host').innerHTML;
     username = document.getElementById('username').innerHTML;
     password = document.getElementById('password').innerHTML;
-    database = document.getElementById('database-s').innerHTML;
+    database = document.getElementById('database').innerHTML;
     port = document.getElementById('port').innerHTML;
     type = document.getElementById('type-database').innerHTML;
 
@@ -112,13 +141,7 @@ window.onload = function() {
         document.getElementById('alert').innerHTML = '<div class="alert alert-danger" role="alert">Please connect to a database first</div>';
     } else if (document.getElementById('type-database').innerHTML == 'mysql') {
         document.getElementById('mysql-status').hidden = false;
-        if (document.getElementById('sqlite-status').hidden == false) {
-            document.getElementById('sqlite-status').hidden = true;
-        }
     } else if (document.getElementById('type-database').innerHTML == 'sqlite') {
         document.getElementById('sqlite-status').hidden = false;
-        if (document.getElementById('mysql-status').hidden == false) {
-            document.getElementById('mysql-status').hidden = true;
-        }
     }
 };
