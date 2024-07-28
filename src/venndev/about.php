@@ -7,7 +7,6 @@
             <br/>
             <p>The software manages to edit, save and read the data saved by VDataStorageSystems virion of PocketMine-PMMP 5</p>
             <p>This is just a small software with no investment, if you are interested, you can contribute :></p>
-            <p>Currently the software supports reading data from MYSQL</p>
         </div>
         <div class="container mt-5 mb-5">
             <h1>Credit</h1>
