@@ -16,6 +16,8 @@ editor = CodeMirror(document.getElementById("code"), {
 });
 
 editor.setSize(null, 500);
+editor.getWrapperElement().style["font-size"] = '25px';
+editor.refresh();
 
 document.querySelector('#tables').addEventListener('change', function() {
     host = document.getElementById('host').innerHTML;

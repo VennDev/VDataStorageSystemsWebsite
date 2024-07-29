@@ -57,7 +57,7 @@ $tables = [];
         <div class="row">
             <div class="col-md-12">
                 <select id="set-sizes" class="form-select bg-secondary ms-auto text-white" aria-label="set-sizes" style="width: 6%;">
-                    <option selected hidden>15</option>
+                    <option selected hidden>25</option>
                     <?php for ($i = 1; $i <= 100; $i++) { ?>
                         <option value="<?php echo $i ?>"><?php echo $i ?></option>
                     <?php } ?>
